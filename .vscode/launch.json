@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-RecordatorioApplication<recordatorio>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "azael.josue.recordatorio.RecordatorioApplication",
+            "projectName": "recordatorio",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

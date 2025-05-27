@@ -25,10 +25,14 @@ public class user {
     public user() {
     }
 
-    // Relación de uno a muchos con la entidad 'note'
+    // Relación de uno a muchos con la entidad 'note',
+    // Tipo cascade ALL para que las notas se guarden y eliminen junto con el usuario,
+    // y orphanRemoval para eliminar notas huérfanas.
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<note> notas = new ArrayList<>();
 
+
+    // Getters y Setters
 
     public Long getId() {
         return id;

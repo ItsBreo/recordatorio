@@ -29,10 +29,14 @@ public class note {
     }
 
     // Relación muchos a uno
+    // FetchType.LAZY para cargar el usuario solo cuando sea necesario
     @ManyToOne(fetch = FetchType.LAZY)
+    // Unión con la entidad 'user' que no sea nulo
     @JoinColumn(name = "usuario_id", nullable = false)
     private user user;
 
+
+    // Getters y Setters
 
     public Long getId() {
         return id;

@@ -9,32 +9,27 @@ public interface userService extends crudService<user, Long> {
 
     @Override
     default void deleteById(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteById'");
+        deleteById(id);
     }
 
     @Override
     default List<user> getAll() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAll'");
+        return getAll();
     }
 
     @Override
     default Optional<user> getById(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getById'");
+        return getById(id);
     }
 
     @Override
-    default user save(user entity) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
+    default user save(user user) {
+        return save(user);
     }
 
     @Override
-    default user update(Long id, user entity) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+    default user update(Long id, user newUser) {
+        return update(id, newUser);
     }
 
 }

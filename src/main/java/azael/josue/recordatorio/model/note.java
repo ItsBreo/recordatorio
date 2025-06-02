@@ -2,6 +2,8 @@ package azael.josue.recordatorio.model;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -32,7 +34,9 @@ public class note {
     // FetchType.LAZY para cargar el usuario solo cuando sea necesario
     @ManyToOne(fetch = FetchType.LAZY)
     // Unión con la entidad 'user' que no sea nulo
-    @JoinColumn(name = "usuario_id", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnore
+    // Evita que se serialice el usuario al convertir a JSON
     private user user;
 
 
@@ -68,5 +72,13 @@ public class note {
 
     public void setDateCreated(LocalDateTime dateCreated) {
         this.dateCreated = dateCreated;
+    }
+
+    public user getUser() {
+        return user;
+    }
+
+    public void setUser(user user) {
+        this.user = user;
     }
 }

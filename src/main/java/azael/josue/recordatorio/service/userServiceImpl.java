@@ -8,7 +8,7 @@ import azael.josue.recordatorio.repository.userRepository;
 @Service
 public class userServiceImpl extends AbstractCrudService<user, Long> implements userService {
 
-    userServiceImpl(userRepository repository) {
+    public userServiceImpl(userRepository repository) {
         super(repository);
     }
 }

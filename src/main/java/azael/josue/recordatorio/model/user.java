@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
@@ -11,8 +14,16 @@ public class user {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank(message = "El nombre de usuario no puede estar vacío")
     private String username;
+
+    @Email(message = "El correo electrónico debe ser válido")
+    @NotBlank(message = "El correo electrónico no puede estar vacío")
     private String email;    
+
+    @Size(min = 8, message = "La contraseña debe tener al menos 8 caracteres")
+    @NotBlank(message = "La contraseña no puede estar vacía")
     private String passwordHash;
 
     public user(Long id, String username, String email, String passwordHash) {
@@ -28,7 +39,7 @@ public class user {
     // Relación de uno a muchos con la entidad 'note',
     // Tipo cascade ALL para que las notas se guarden y eliminen junto con el usuario,
     // y orphanRemoval para eliminar notas huérfanas.
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<note> notas = new ArrayList<>();
 
 
@@ -66,5 +77,11 @@ public class user {
         this.passwordHash = passwordHash;
     }
 
+    public List<note> getNotas() {
+        return notas;
+    }
 
+    public void setNotas(List<note> notas) {
+        this.notas = notas;
+    }
 }
